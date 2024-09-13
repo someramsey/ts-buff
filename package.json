@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "0.0.2",
     "name": "ts-buff",
     "main": "out/cjs/index.js",
     "module": "out/mjs/index.js",
@@ -14,5 +14,14 @@
         "out/types/**/*"
     ],
     "author": "Ramsey",
-    "description": "A simple type-safe schema-based buffer serialization library in TypeScript"
+    "description": "A simple type-safe schema-based buffer serialization library in TypeScript",
+    "keywords": [
+        "buffer",
+        "serialization",
+        "deserialization",
+        "transform",
+        "schema",
+        "typescript",
+        "type-safe"
+    ]
 }
