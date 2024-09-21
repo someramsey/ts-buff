@@ -1,19 +1,23 @@
 {
-    "version": "0.0.2",
+    "version": "0.0.8",
     "name": "ts-buff",
-    "main": "out/cjs/index.js",
-    "module": "out/mjs/index.js",
-    "types": "out/types/index.d.ts",
-    "license": "ISC",
+    "author": "Ramsey",
+    "main": "dist/cjs/index.js",
+    "module": "dist/mjs/index.mjs",
+    "types": "dist/types/index.d.ts",
     "devDependencies": {
         "typescript": "^5.6.2"
     },
     "files": [
-        "out/cjs/**/*",
-        "out/mjs/**/*",
-        "out/types/**/*"
+        "dist"
     ],
-    "author": "Ramsey",
+    "exports": {
+        ".": {
+            "require": "./dist/cjs/index.js",
+            "import": "./dist/esm/index.mjs",
+            "types": "./dist/types/index.d.ts"
+        }
+    },
     "description": "A simple type-safe schema-based buffer serialization library in TypeScript",
     "keywords": [
         "buffer",
@@ -23,5 +27,6 @@
         "schema",
         "typescript",
         "type-safe"
-    ]
+    ],
+    "license": "ISC"
 }

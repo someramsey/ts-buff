@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import { Serializable } from "./core";
 export type BufferContext = {
     buffer: Buffer;
@@ -40,3 +39,4 @@ declare const _default: {
     readonly array: typeof array;
 };
 export default _default;
+export * from "./core";

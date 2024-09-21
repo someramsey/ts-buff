@@ -169,3 +169,5 @@ export function array<T, U extends T[]>(itemSchema: Serializable<T>, maxLength: 
 }
 
 export default { bufferContext, int32, int16, int8, uint32, uint16, uint8, float32, float64, string, boolean, date, object, array } as const;
+
+export * from "./core"

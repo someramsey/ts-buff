@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createSerializable = void 0;
+exports.createSerializable = createSerializable;
 function createSerializable(options) {
     return {
         size: options.size,
@@ -15,5 +15,3 @@ function createSerializable(options) {
         }
     };
 }
-exports.createSerializable = createSerializable;
-//# sourceMappingURL=core.js.map

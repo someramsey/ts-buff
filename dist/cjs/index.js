@@ -1,16 +1,42 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.array = exports.object = exports.date = exports.boolean = exports.string = exports.float64 = exports.float32 = exports.uint8 = exports.uint16 = exports.uint32 = exports.int8 = exports.int16 = exports.int32 = exports.rewindContext = exports.bufferContext = void 0;
+exports.bufferContext = bufferContext;
+exports.rewindContext = rewindContext;
+exports.int32 = int32;
+exports.int16 = int16;
+exports.int8 = int8;
+exports.uint32 = uint32;
+exports.uint16 = uint16;
+exports.uint8 = uint8;
+exports.float32 = float32;
+exports.float64 = float64;
+exports.string = string;
+exports.boolean = boolean;
+exports.date = date;
+exports.object = object;
+exports.array = array;
 const core_1 = require("./core");
 function bufferContext(size) {
     return { buffer: Buffer.alloc(size), offset: 0 };
 }
-exports.bufferContext = bufferContext;
 function rewindContext(context) {
     context.offset = 0;
     return context;
 }
-exports.rewindContext = rewindContext;
 function int32() {
     return (0, core_1.createSerializable)({
         size: 4,
@@ -18,7 +44,6 @@ function int32() {
         read: (context) => context.buffer.readInt32LE(context.offset)
     });
 }
-exports.int32 = int32;
 function int16() {
     return (0, core_1.createSerializable)({
         size: 2,
@@ -26,7 +51,6 @@ function int16() {
         read: (context) => context.buffer.readInt16LE(context.offset)
     });
 }
-exports.int16 = int16;
 function int8() {
     return (0, core_1.createSerializable)({
         size: 1,
@@ -34,7 +58,6 @@ function int8() {
         read: (context) => context.buffer.readInt8(context.offset)
     });
 }
-exports.int8 = int8;
 function uint32() {
     return (0, core_1.createSerializable)({
         size: 4,
@@ -42,7 +65,6 @@ function uint32() {
         read: (context) => context.buffer.readUInt32LE(context.offset)
     });
 }
-exports.uint32 = uint32;
 function uint16() {
     return (0, core_1.createSerializable)({
         size: 2,
@@ -50,7 +72,6 @@ function uint16() {
         read: (context) => context.buffer.readUInt16LE(context.offset)
     });
 }
-exports.uint16 = uint16;
 function uint8() {
     return (0, core_1.createSerializable)({
         size: 1,
@@ -58,7 +79,6 @@ function uint8() {
         read: (context) => context.buffer.readUInt8(context.offset)
     });
 }
-exports.uint8 = uint8;
 function float32() {
     return (0, core_1.createSerializable)({
         size: 4,
@@ -66,7 +86,6 @@ function float32() {
         read: (context) => context.buffer.readFloatLE(context.offset)
     });
 }
-exports.float32 = float32;
 function float64() {
     return (0, core_1.createSerializable)({
         size: 8,
@@ -74,7 +93,6 @@ function float64() {
         read: (context) => context.buffer.readDoubleLE(context.offset)
     });
 }
-exports.float64 = float64;
 function string(maxSize) {
     return (0, core_1.createSerializable)({
         size: maxSize,
@@ -87,7 +105,6 @@ function string(maxSize) {
         read: (context) => context.buffer.toString("utf-8", context.offset, context.offset + maxSize)
     });
 }
-exports.string = string;
 function boolean() {
     return (0, core_1.createSerializable)({
         size: 1,
@@ -95,7 +112,6 @@ function boolean() {
         read: (context) => context.buffer.readUInt8(context.offset) === 1,
     });
 }
-exports.boolean = boolean;
 function date() {
     return (0, core_1.createSerializable)({
         size: 8,
@@ -103,7 +119,6 @@ function date() {
         read: (context) => new Date(Number(context.buffer.readBigInt64LE(context.offset))),
     });
 }
-exports.date = date;
 function object(fields) {
     return {
         size: Object.values(fields).reduce((size, field) => size + field.size, 0),
@@ -121,7 +136,6 @@ function object(fields) {
         }
     };
 }
-exports.object = object;
 function array(itemSchema, maxLength) {
     return {
         size: itemSchema.size * maxLength + 4,
@@ -149,6 +163,5 @@ function array(itemSchema, maxLength) {
         }
     };
 }
-exports.array = array;
 exports.default = { bufferContext, int32, int16, int8, uint32, uint16, uint8, float32, float64, string, boolean, date, object, array };
-//# sourceMappingURL=index.js.map
+__exportStar(require("./core"), exports);
